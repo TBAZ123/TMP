@@ -5,7 +5,9 @@ import urllib3
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
 from git import Repo
-APP_VERSION = "0.0.23"
+import urllib.request
+import rarfile
+APP_VERSION = "1.0.2"
 
 class Example(QWidget): 
 
@@ -46,7 +48,14 @@ class Example(QWidget):
                                              f'A new version ({version_text}) is available. Do you want to update?',
                                              QMessageBox.Yes | QMessageBox.No)
                 if reply == QMessageBox.Yes:
-
+                    url = "https://raw.githubusercontent.com/TBAZ123/TMP/main/Tmp.rar"
+                    filename = "Update_Tmp.rar"
+                    output_dir = "Tmp"
+                    urllib.request.urlretrieve(url, filename)
+                    # Open the RAR file
+                    with rarfile.RarFile(filename) as rf:
+                        # Extract all files to the output directory
+                        rf.extractall(output_dir)
                     sys.exit(0)
             else:
                 QMessageBox.information(None, 'No update available', 'You have the latest version of the application.')
