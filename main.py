@@ -7,7 +7,8 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
 from git import Repo
 import urllib.request
 import rarfile
-APP_VERSION = "1.0.2"
+from pyunpack import Archive
+APP_VERSION = "1.0.0"
 
 class Example(QWidget): 
 
@@ -32,6 +33,7 @@ class Example(QWidget):
     def showMessageBox(self):
         QMessageBox.information(self, 'Message', 'Hello, world!')
 
+
     def check_for_updates(self, current_version):     
         try:
             http = urllib3.PoolManager()
@@ -50,13 +52,9 @@ class Example(QWidget):
                 if reply == QMessageBox.Yes:
                     url = "https://raw.githubusercontent.com/TBAZ123/TMP/main/Tmp.rar"
                     filename = "Update_Tmp.rar"
-                    output_dir = "Tmp"
                     urllib.request.urlretrieve(url, filename)
-                    # Open the RAR file
-                    with rarfile.RarFile(filename) as rf:
-                        # Extract all files to the output directory
-                        rf.extractall(output_dir)
-                    sys.exit(0)
+                    Archive(filename).extractall('D:\Works\STD\Tmp')
+                    # sys.exit(0)
             else:
                 QMessageBox.information(None, 'No update available', 'You have the latest version of the application.')
         except Exception as e:
