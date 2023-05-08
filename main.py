@@ -5,10 +5,7 @@ import urllib3
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
 from git import Repo
-
 APP_VERSION = "0.0.23"
-
-file_name = "VS.ini"
 
 class Example(QWidget): 
 
@@ -36,7 +33,7 @@ class Example(QWidget):
     def check_for_updates(self, current_version):     
         try:
             http = urllib3.PoolManager()
-            url = 'https://raw.githubusercontent.com/TBAZ123/Test_Python_WinApp_Update22/main/version.txt'
+            url = 'https://raw.githubusercontent.com/TBAZ123/TMP/main/VS.ini'
             response = http.request('GET', url)
             version_text = response.data.decode('utf-8')  # decode bytes to str
             version_parts = version_text.split('.')
