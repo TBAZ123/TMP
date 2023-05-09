@@ -59,7 +59,7 @@ class Example(QWidget):
                     urllib.request.urlretrieve(url, filename)
                     Archive(filename).extractall(pathlib.Path(__file__).parent.resolve())
                     # sys.exit(0)
-                    importlib.reload(sys)
+                    importlib.reload()
             else:
                 QMessageBox.information(None, 'No update available', 'You have the latest version of the application.')
         except Exception as e:
