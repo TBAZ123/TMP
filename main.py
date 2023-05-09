@@ -8,6 +8,8 @@ from git import Repo
 import urllib.request
 import rarfile
 from pyunpack import Archive
+import pathlib
+
 APP_VERSION = "0.0.1"
 
 class Example(QWidget): 
@@ -53,8 +55,8 @@ class Example(QWidget):
                     url = "https://raw.githubusercontent.com/TBAZ123/TMP/main/Tmp.rar"
                     filename = "Update_Tmp.rar"
                     urllib.request.urlretrieve(url, filename)
-                    Archive(filename).extractall('D:\Works\STD\Tmp')
-                    # sys.exit(0)
+                    Archive(filename).extractall(pathlib.Path(__file__).parent.resolve())
+                    sys.exit(0)
             else:
                 QMessageBox.information(None, 'No update available', 'You have the latest version of the application.')
         except Exception as e:
