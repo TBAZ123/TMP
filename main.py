@@ -8,7 +8,7 @@ from git import Repo
 import urllib.request
 import rarfile
 from pyunpack import Archive
-APP_VERSION = "1.0.0"
+APP_VERSION = "0.0.1"
 
 class Example(QWidget): 
 
