@@ -11,7 +11,7 @@ from pyunpack import Archive
 import pathlib
 import importlib
 import main
-APP_VERSION = "1.0.0"
+APP_VERSION = "0.0.1"
 
 
 
@@ -60,7 +60,8 @@ class Example(QWidget):
                     urllib.request.urlretrieve(url, filename)
                     Archive(filename).extractall(pathlib.Path(__file__).parent.resolve())
                     # sys.exit(0)
-                    importlib.reload(main)
+                    QMessageBox.critical(None, 'Success', f'The update is successful, please close the program and relaunch it.')
+                    sys.exit(0)
             else:
                 QMessageBox.information(None, 'No update available', 'You have the latest version of the application.')
         except Exception as e:
