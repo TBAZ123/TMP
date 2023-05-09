@@ -9,8 +9,8 @@ import urllib.request
 import rarfile
 from pyunpack import Archive
 import pathlib
-
 APP_VERSION = "1.0.0"
+
 
 
 class Example(QWidget): 
