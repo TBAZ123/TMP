@@ -9,6 +9,7 @@ import urllib.request
 import rarfile
 from pyunpack import Archive
 import pathlib
+import importlib
 APP_VERSION = "1.0.0"
 
 
@@ -22,7 +23,7 @@ class Example(QWidget):
 
     def initUI(self):
 
-        btn = QPushButton('Click me', self)
+        btn = QPushButton(APP_VERSION, self)
         btn.setToolTip('Click to show message box')
         btn.resize(btn.sizeHint())
         btn.move(50, 50)
@@ -57,7 +58,8 @@ class Example(QWidget):
                     filename = "Update_Tmp.rar"
                     urllib.request.urlretrieve(url, filename)
                     Archive(filename).extractall(pathlib.Path(__file__).parent.resolve())
-                    sys.exit(0)
+                    # sys.exit(0)
+                    importlib.reload(sys)
             else:
                 QMessageBox.information(None, 'No update available', 'You have the latest version of the application.')
         except Exception as e:
