@@ -10,7 +10,7 @@ import rarfile
 from pyunpack import Archive
 import pathlib
 import importlib
-APP_VERSION = "1.0.0"
+APP_VERSION = "0.0.1"
 
 
 
