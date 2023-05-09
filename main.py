@@ -10,7 +10,7 @@ import rarfile
 from pyunpack import Archive
 import pathlib
 
-APP_VERSION = "0.0.1"
+APP_VERSION = "1.0.0"
 
 
 class Example(QWidget): 
